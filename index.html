@@ -1,8 +1,37 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-
+  <meta charset="UTF-8" />
+  <title>Two Player Gun Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1>tests</h1><h2>test</h2>
+  <button id="startButton">Start Game</button>
+
+  <div id="gameInfo" style="display: none;">
+    <div id="healthBars">
+      <div class="healthBar">
+        <div id="player1HealthFill" class="healthFill"></div>
+      </div>
+      <div class="healthBar">
+        <div id="player2HealthFill" class="healthFill"></div>
+      </div>
+    </div>
+    <div id="scoreBoard">
+      <span id="player1Score">Player 1: 0</span>
+      <span id="player2Score">Player 2: 0</span>
+      <span id="level">Level: 1</span>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas" width="800" height="500"></canvas>
+
+  <div id="gameOverScreen" style="display: none;">
+    <h1>Game Over</h1>
+    <p>Both players have fallen!</p>
+    <button id="restartButton">Restart</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+</html>
