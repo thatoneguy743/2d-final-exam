@@ -138,4 +138,32 @@ canvas {
     transform: scale(0.5);
   }
 }
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0px 0px transparent;
+    opacity: 0;
+  }
+  50% {
+    box-shadow: 0 0 25px 15px rgba(255, 255, 255, 0.7);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 0px 0px transparent;
+    opacity: 0;
+  }
+}
 
+@keyframes riseFade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

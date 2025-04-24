@@ -164,6 +164,7 @@ function spawnEnemies(count) {
     });
   }
 
+  // Revive players if only one was alive
   if (player1.health <= 0 && player2.health > 0) revivePlayer(player1);
   if (player2.health <= 0 && player1.health > 0) revivePlayer(player2);
 }
