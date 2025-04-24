@@ -1,170 +1,141 @@
 /* General Layout */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #222;
-    overflow: hidden;
-    height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Start Button */
+#startButton {
+  font-size: 24px;
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+#startButton:hover {
+  background-color: darkblue;
+}
+
+/* Game Info Panel */
+#gameInfo {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Scoreboard */
+#scoreBoard {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+#scoreBoard span {
+  margin: 0 15px;
+}
+
+/* Canvas */
+canvas {
+  border: 2px solid white;
+  margin-top: 20px;
+}
+
+/* Health Bars */
+#healthBars {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.healthBar {
+  width: 200px;
+  height: 20px;
+  border: 2px solid white;
+  background-color: #444;
+}
+
+.healthFill {
+  height: 100%;
+  background-color: red;
+  transition: width 0.3s;
+}
+
+/* Game Over Screen */
+#gameOverScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 10;
+}
+
+#gameOverScreen h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+#gameOverScreen p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#restartButton {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#restartButton:hover {
+  background-color: #666;
+}
+
+/* Enemy hit animation */
+.enemy-hit {
+  position: absolute;
+  width: 50px;
+  height: 60px;
+  background-color: green;
+  animation: fadeOut 0.5s forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* Start Button */
-  #startButton {
-    font-size: 24px;
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
   }
-  
-  #startButton:hover {
-    background-color: darkblue;
-  }
-  
-  /* Game Info Panel */
-  #gameInfo {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  /* Scoreboard */
-  #scoreBoard {
-    display: flex;
-    justify-content: space-between;
-    width: 800px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: white;
-  }
-  
-  #scoreBoard span {
-    margin: 0 15px;
-  }
-  
-  /* Canvas */
-  canvas {
-    border: 2px solid white;
-    margin-top: 20px;
-  }
-  
-  /* Health Bars */
-  #healthBars {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .healthBar {
-    width: 200px;
-    height: 20px;
-    border: 2px solid white;
-    background-color: #444;
-  }
-  
-  .healthFill {
-    height: 100%;
-    background-color: red;
-    transition: width 0.3s;
-  }
-  
-  /* Game Over Screen */
-  #gameOverScreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    z-index: 10;
-  }
-  
-  #gameOverScreen h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  
-  #gameOverScreen p {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  #restartButton {
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: #444;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  #restartButton:hover {
-    background-color: #666;
-  }
-  
-  /* Enemy hit animation */
-  .enemy-hit {
-    position: absolute;
-    width: 50px;
-    height: 60px;
-    background-color: green;
-    animation: fadeOut 0.5s forwards;
-    pointer-events: none;
-  }
-  
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-  }
-  @keyframes pulseGlow {
-    0% {
-      box-shadow: 0 0 0px 0px transparent;
-      opacity: 0;
-    }
-    50% {
-      box-shadow: 0 0 25px 15px rgba(255, 255, 255, 0.7);
-      opacity: 1;
-    }
-    100% {
-      box-shadow: 0 0 0px 0px transparent;
-      opacity: 0;
-    }
-  }
-  
-  @keyframes riseFade {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    50% {
-      opacity: 1;
-      transform: translateY(-5px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-  }
-  
+}
+
