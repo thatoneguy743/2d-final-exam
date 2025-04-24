@@ -164,7 +164,6 @@ function spawnEnemies(count) {
     });
   }
 
-  // Revive players if only one was alive
   if (player1.health <= 0 && player2.health > 0) revivePlayer(player1);
   if (player2.health <= 0 && player1.health > 0) revivePlayer(player2);
 }
@@ -208,7 +207,7 @@ function checkCollisions() {
           (i === 0 ? player1 : player2).score++;
           if (enemies.length === 0) {
             level++;
-            levelElem.textContent = Level: ${level};
+            levelElem.textContent = `Level: ${level}`;
             spawnEnemies(level + 1);
           }
         }
@@ -250,13 +249,13 @@ function enemyCollides(enemy, player) {
 }
 
 function updateScore() {
-  player1ScoreElem.textContent = Player 1: ${player1.score};
-  player2ScoreElem.textContent = Player 2: ${player2.score};
+  player1ScoreElem.textContent = `Player 1: ${player1.score}`;
+  player2ScoreElem.textContent = `Player 2: ${player2.score}`;
 }
 
 function updateHealthBars() {
-  player1HealthFill.style.width = ${Math.max(player1.health, 0)}%;
-  player2HealthFill.style.width = ${Math.max(player2.health, 0)}%;
+  player1HealthFill.style.width = `${Math.max(player1.health, 0)}%`;
+  player2HealthFill.style.width = `${Math.max(player2.health, 0)}%`;
 
   if (player1.health > 0 && player1.health < 100) player1.health += 0.1;
   if (player2.health > 0 && player2.health < 100) player2.health += 0.1;
@@ -272,10 +271,10 @@ function revivePlayer(player) {
 
   const glow = document.createElement('div');
   glow.style.position = 'absolute';
-  glow.style.width = ${playerWidth}px;
-  glow.style.height = ${playerHeight}px;
+  glow.style.width = `${playerWidth}px`;
+  glow.style.height = `${playerHeight}px`;
   glow.style.borderRadius = '8px';
-  glow.style.boxShadow = 0 0 20px 10px ${player.color};
+  glow.style.boxShadow = `0 0 20px 10px ${player.color}`;
   glow.style.left = canvas.offsetLeft + player.x + 'px';
   glow.style.top = canvas.offsetTop + player.y + 'px';
   glow.style.zIndex = 5;
@@ -283,14 +282,14 @@ function revivePlayer(player) {
   document.body.appendChild(glow);
 
   const message = document.createElement('div');
-  message.textContent = ${player === player1 ? 'Player 1' : 'Player 2'} Revived!;
+  message.textContent = `${player === player1 ? 'Player 1' : 'Player 2'} Revived!`;
   message.style.position = 'absolute';
   message.style.left = canvas.offsetLeft + player.x + 'px';
   message.style.top = canvas.offsetTop + player.y - 30 + 'px';
   message.style.color = 'white';
   message.style.fontSize = '20px';
   message.style.fontWeight = 'bold';
-  message.style.textShadow = 0 0 5px ${player.color};
+  message.style.textShadow = `0 0 5px ${player.color}`;
   message.style.animation = 'riseFade 1.2s ease-out';
   document.body.appendChild(message);
 
@@ -310,12 +309,12 @@ restartButton.addEventListener('click', () => {
   sword1 = null;
   sword2 = null;
 
-  levelElem.textContent = Level: ${level};
-  player1ScoreElem.textContent = Player 1: 0;
-  player2ScoreElem.textContent = Player 2: 0;
+  levelElem.textContent = `Level: ${level}`;
+  player1ScoreElem.textContent = `Player 1: 0`;
+  player2ScoreElem.textContent = `Player 2: 0`;
 
   gameOverScreen.style.display = 'none';
   gameRunning = true;
-  spawnEnemies( level + 1);
+  spawnEnemies(level + 1);
   gameLoop();
 });
