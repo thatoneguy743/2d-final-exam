@@ -18,6 +18,7 @@ let swordSpeed = 10;
 let playerSpeed = 5;
 let level = 1;
 let enemies = [];
+console.log('wtf');
 
 const player1 = {
   x: 100,
@@ -254,7 +255,7 @@ function updateScore() {
   player1ScoreElem.textContent = `Player 1: ${player1.score}`;
   player2ScoreElem.textContent = `Player 2: ${player2.score}`;
 }
-// player revive/
+// player revive/ 
 function updateHealthBars() {
   player1HealthFill.style.width = `${Math.max(player1.health, 0)}%`;
   player2HealthFill.style.width = `${Math.max(player2.health, 0)}%`;
