@@ -9,7 +9,7 @@ const player1HealthFill = document.getElementById('player1HealthFill');
 const player2HealthFill = document.getElementById('player2HealthFill');
 const gameOverScreen = document.getElementById('gameOverScreen');
 const restartButton = document.getElementById('restartButton');
-
+  // player and enemies info //
 const playerWidth = 50;
 const playerHeight = 60;
 const swordLength = 40;
@@ -188,7 +188,7 @@ function drawEnemies() {
     ctx.fillRect(enemy.x, enemy.y, playerWidth, playerHeight);
   });
 }
-
+ //
 function checkCollisions() {
   const allSwords = [sword1, sword2];
   allSwords.forEach((sword, i) => {
