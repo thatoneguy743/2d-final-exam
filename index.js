@@ -188,7 +188,7 @@ function drawEnemies() {
     ctx.fillRect(enemy.x, enemy.y, playerWidth, playerHeight);
   });
 }
- //
+ // how the enemies hurt the player /
 function checkCollisions() {
   const allSwords = [sword1, sword2];
   allSwords.forEach((sword, i) => {
@@ -201,6 +201,7 @@ function checkCollisions() {
         sword.y < enemy.y + playerHeight &&
         sword.y + swordLength > enemy.y
       ) {
+        // enemies health and scoring/
         enemy.health -= 50;
         if (enemy.health <= 0) {
           animateEnemyDeath(enemy);
@@ -238,7 +239,7 @@ function checkPlayerDamage() {
     }
   });
 }
-
+ // how the enemies do damage/
 function enemyCollides(enemy, player) {
   return (
     player.health > 0 &&
@@ -248,25 +249,25 @@ function enemyCollides(enemy, player) {
     enemy.y + playerHeight > player.y
   );
 }
-
+ // scoreing /
 function updateScore() {
   player1ScoreElem.textContent = `Player 1: ${player1.score}`;
   player2ScoreElem.textContent = `Player 2: ${player2.score}`;
 }
-
+// player revive/
 function updateHealthBars() {
   player1HealthFill.style.width = `${Math.max(player1.health, 0)}%`;
   player2HealthFill.style.width = `${Math.max(player2.health, 0)}%`;
-
+ // player regen /
   if (player1.health > 0 && player1.health < 100) player1.health += 0.1;
   if (player2.health > 0 && player2.health < 100) player2.health += 0.1;
 }
-
+ // game over/
 function endGame() {
   gameRunning = false;
   gameOverScreen.style.display = 'flex';
 }
-
+// also player revive/
 function revivePlayer(player) {
   player.health = 50;
 
