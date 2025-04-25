@@ -16,7 +16,7 @@ body {
   font-size: 24px;
   padding: 10px 20px;
   background-color: red;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
   border-radius: 5px;
