@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #585555;
   overflow: hidden;
   height: 100vh;
 }
@@ -44,7 +44,7 @@ body {
   width: 800px;
   font-size: 18px;
   margin-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 #scoreBoard span {
@@ -53,7 +53,7 @@ body {
 
 /* Canvas */
 canvas {
-  border: 2px solid white;
+  border: 2px solid rgb(0, 0, 0);
   margin-top: 20px;
 }
 
