@@ -321,57 +321,6 @@ restartButton.addEventListener('click', () => {
   spawnEnemies(level + 1);
   gameLoop();
 
-// KONAMI CODE EASTER EGG
-const konamiCode = [
-  'i', 'i',
-  'k', 'k',
-  'j', 'l',
-  'j', 'l',
-  'b', 'n', 'rightShift'
-];
-let konamiIndex = 0;
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === konamiCode[konamiIndex]) {
-    konamiIndex++;
-    if (konamiIndex === konamiCode.length) {
-      activateChaosMode();
-      konamiIndex = 0;
-    }
-  } else {
-    konamiIndex = 0;
-  }
-});
-
-function activateChaosMode() {
-  console.log('CHAOS MODE ACTIVATED!!!');
-
-  // Boost players
-  playerSpeed = 15;
-  swordSpeed = 25;
-
-  // Rapid fire swords
-  setInterval(() => {
-    if (gameRunning) {
-      if (player1.health > 0 && !sword1) sword1 = createSword(player1);
-      if (player2.health > 0 && !sword2) sword2 = createSword(player2);
-    }
-  }, 200); // fire every 0.2 seconds
-
-  // Make enemies crazy
-  enemies.forEach(enemy => {
-    enemy.color = getRandomColor();
-    enemy.speed = 4;
-    enemy.health = 200;
-  });
-
-  // Flashing background
-  setInterval(() => {
-    if (gameRunning) {
-      canvas.style.backgroundColor = getRandomColor();
-    }
-  }, 100);
-}
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
@@ -382,3 +331,27 @@ function getRandomColor() {
   return color;
 }
 });
+// Easter Egg: Custom Konami Code
+const easterEggCode = ['i', 'i', 'k', 'k', 'j', 'l', 'j', 'l', 'b', 'n', 'ShiftRight'];
+let easterEggProgress = 0;
+
+document.addEventListener('keydown', (e) => {
+  const key = e.code === 'ShiftRight' ? 'ShiftRight' : e.key.toLowerCase();
+  
+  if (key === easterEggCode[easterEggProgress]) {
+    easterEggProgress++;
+    if (easterEggProgress === easterEggCode.length) {
+      triggerEasterEgg();
+      easterEggProgress = 0; // Reset after success
+    }
+  } else {
+    easterEggProgress = 0; // Reset if wrong key
+  }
+});
+
+function triggerEasterEgg() {
+  alert('Easter Egg Activated! Super Health Mode!');
+  player1.health = 200;
+  player2.health = 200;
+  updateHealthBars();
+}
