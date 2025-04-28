@@ -323,11 +323,11 @@ restartButton.addEventListener('click', () => {
 
 // KONAMI CODE EASTER EGG
 const konamiCode = [
-  'ArrowUp', 'ArrowUp',
-  'ArrowDown', 'ArrowDown',
-  'ArrowLeft', 'ArrowRight',
-  'ArrowLeft', 'ArrowRight',
-  'b', 'a', 'Enter'
+  'i', 'i',
+  'k', 'k',
+  'j', 'l',
+  'j', 'l',
+  'b', 'n', 'rightShift'
 ];
 let konamiIndex = 0;
 
