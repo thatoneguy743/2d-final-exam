@@ -320,4 +320,65 @@ restartButton.addEventListener('click', () => {
   gameRunning = true;
   spawnEnemies(level + 1);
   gameLoop();
+
+// KONAMI CODE EASTER EGG
+const konamiCode = [
+  'ArrowUp', 'ArrowUp',
+  'ArrowDown', 'ArrowDown',
+  'ArrowLeft', 'ArrowRight',
+  'ArrowLeft', 'ArrowRight',
+  'b', 'a', 'Enter'
+];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === konamiCode[konamiIndex]) {
+    konamiIndex++;
+    if (konamiIndex === konamiCode.length) {
+      activateChaosMode();
+      konamiIndex = 0;
+    }
+  } else {
+    konamiIndex = 0;
+  }
+});
+
+function activateChaosMode() {
+  console.log('CHAOS MODE ACTIVATED!!!');
+
+  // Boost players
+  playerSpeed = 15;
+  swordSpeed = 25;
+
+  // Rapid fire swords
+  setInterval(() => {
+    if (gameRunning) {
+      if (player1.health > 0 && !sword1) sword1 = createSword(player1);
+      if (player2.health > 0 && !sword2) sword2 = createSword(player2);
+    }
+  }, 200); // fire every 0.2 seconds
+
+  // Make enemies crazy
+  enemies.forEach(enemy => {
+    enemy.color = getRandomColor();
+    enemy.speed = 4;
+    enemy.health = 200;
+  });
+
+  // Flashing background
+  setInterval(() => {
+    if (gameRunning) {
+      canvas.style.backgroundColor = getRandomColor();
+    }
+  }, 100);
+}
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 });
