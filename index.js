@@ -331,8 +331,9 @@ restartButton.addEventListener('click', () => {
   gameRunning = true;
   spawnEnemies(level + 1);
   gameLoop();
+});
 
-
+// Moved this OUTSIDE the event listener — was accidentally nested
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -341,7 +342,6 @@ function getRandomColor() {
   }
   return color;
 }
-});
 // Easter Egg: Custom Konami Code
 const easterEggCode = ['i', 'i', 'k', 'k', 'j', 'l', 'j', 'l', 'b', 'n', 'ShiftRight'];
 let easterEggProgress = 0;
