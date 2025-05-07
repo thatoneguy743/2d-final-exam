@@ -40,6 +40,27 @@ const player2 = {
   health: 100
 };
 
+// Create the audio object
+const blasterSound = new Audio('blaster.mp3');
+
+// Function to play the sound
+function playBlasterSound() {
+  blasterSound.currentTime = 0; // Rewind to start
+  blasterSound.play();
+}
+
+// Example: Call this function whenever a player shoots
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'spacebar') {
+    // Player 1 shoots
+    playBlasterSound();
+  }
+  if (e.key === 'enter') {
+    // Player 2 shoots
+    playBlasterSound();
+  }
+});
+
 let sword1 = null;
 let sword2 = null;
 let keysPressed = {};
@@ -116,8 +137,9 @@ function updatePlayer(player, controls, fireSword) {
   }
   if (keysPressed[controls.sword]) {
     fireSword();
+    playBlasterSound();
   }
-}
+  }
 
 function createSword(player) {
   const dir = { x: 0, y: 0 };
