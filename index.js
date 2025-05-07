@@ -41,8 +41,8 @@ const player2 = {
 };
 
 // --- Load Star Wars blaster sound with proper settings --- //
-const blasterSound = new Audio('blaster.mp3');
-blasterSound.preload = 'auto';
+// Replace the blaster sound with the external URL
+const blasterSound = new Audio('https://www.soundjay.com/button/beep-07.wav');
 
 function playBlasterSound() {
   const sound = blasterSound.cloneNode();
@@ -50,6 +50,7 @@ function playBlasterSound() {
     console.warn('Audio play failed:', err);
   });
 }
+
 
 
 let sword1 = null;
