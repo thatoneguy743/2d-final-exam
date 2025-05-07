@@ -40,13 +40,15 @@ const player2 = {
   health: 100
 };
 
-// Add Star Wars blaster sound
+// --- Load Star Wars blaster sound with proper settings --- //
 const blasterSound = new Audio('blaster.mp3');
+blasterSound.preload = 'auto';
 
 function playBlasterSound() {
-  // Clone to allow overlapping sounds
   const sound = blasterSound.cloneNode();
-  sound.play();
+  sound.play().catch(err => {
+    console.warn('Audio play failed:', err);
+  });
 }
 
 
@@ -126,9 +128,10 @@ function updatePlayer(player, controls, fireSword) {
   }
   if (keysPressed[controls.sword]) {
     fireSword();
-    playBlasterSound(); // 🔊 Play sound on sword fire
+    playBlasterSound(); // 🔊 This now works after user interaction
   }
 }
+
 
 function createSword(player) {
   const dir = { x: 0, y: 0 };
