@@ -41,7 +41,9 @@ const player2 = {
 };
 
 // --- Load Star Wars blaster sound with proper settings --- //
-const blasterSound = new Audio('C:\Users\NVProg007\Downloads\myinstants.mp3');
+// ✅ Hosted laser/blaster sound
+const blasterSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_4fda939edb.mp3?filename=laser-blast-81267.mp3');
+
 
 function playBlasterSound() {
   if (!blasterSound) return;
