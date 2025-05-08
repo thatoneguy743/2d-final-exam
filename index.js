@@ -43,8 +43,6 @@ const player2 = {
 // --- Load Star Wars blaster sound with proper settings --- //
 // ✅ Hosted laser/blaster sound
 const blasterSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_4fda939edb.mp3?filename=laser-blast-81267.mp3');
-
-
 function playBlasterSound() {
   if (!blasterSound) return;
   try {
@@ -54,6 +52,13 @@ function playBlasterSound() {
     console.warn('Blaster sound failed to play:', e);
   }
 }
+// Unlock audio playback on first user interaction
+window.addEventListener('click', () => {
+  blasterSound.play().then(() => {
+    blasterSound.pause();
+    blasterSound.currentTime = 0;
+  }).catch(() => {});
+}, { once: true });
 
 
 let sword1 = null;
