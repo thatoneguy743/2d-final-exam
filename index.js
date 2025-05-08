@@ -113,6 +113,8 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
+let lastSwordTime = 0;
+
 function updatePlayer(player, controls, fireSword) {
   if (keysPressed[controls.left] && player.x > 0) {
     player.x -= playerSpeed;
@@ -130,11 +132,15 @@ function updatePlayer(player, controls, fireSword) {
     player.y += playerSpeed;
     player.direction = 'down';
   }
-  if (keysPressed[controls.sword]) {
+
+  const now = performance.now();
+  if (keysPressed[controls.sword] && now - lastSwordTime > 300) {
+    lastSwordTime = now;
     fireSword();
-    playBlasterSound(); // 🔊 This now works after user interaction
+    playBlasterSound();
   }
 }
+
 
 
 function createSword(player) {
