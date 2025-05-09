@@ -70,13 +70,21 @@ document.addEventListener('keydown', (e) => keysPressed[e.key] = true);
 document.addEventListener('keyup', (e) => keysPressed[e.key] = false);
 
 startButton.addEventListener('click', () => {
+  // Unlock audio
+  blasterSound.play().then(() => {
+    blasterSound.pause();
+    blasterSound.currentTime = 0;
+  }).catch(() => {});
+
+  // Start game logic
   startButton.style.display = 'none';
   document.getElementById('gameInfo').style.display = 'block';
   healthBars.style.display = 'block';
   spawnEnemies(level + 1);
   gameRunning = true;
   gameLoop();
-});
+}, { once: true });
+
 
 function gameLoop() {
   if (!gameRunning) return;
