@@ -40,7 +40,9 @@ const player2 = {
   health: 100
 };
 
-const blasterSound = new Audio("https://www.soundjay.com/button/sounds/beep-07.mp3");
+// --- Load Star Wars blaster sound with proper settings --- //
+// ✅ Hosted laser/blaster sound
+const blasterSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_4fda939edb.mp3?filename=laser-blast-81267.mp3');
 function playBlasterSound() {
   if (!blasterSound) return;
   try {
@@ -49,8 +51,6 @@ function playBlasterSound() {
   } catch (e) {
     console.warn('Blaster sound failed to play:', e);
   }
-}
-
 }
 // Unlock audio playback on first user interaction
 window.addEventListener('click', () => {
