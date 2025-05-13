@@ -40,24 +40,32 @@ const player2 = {
   health: 100
 };
 
-// --- Load Star Wars blaster sound with proper settings --- //
-// ✅ Hosted laser/blaster sound
+// --- Load Star Wars blaster sound ---
 const blasterSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_4fda939edb.mp3?filename=laser-blast-81267.mp3');
+blasterSound.preload = 'auto'; // Preload the audio for better performance
+
 function playBlasterSound() {
-  if (!blasterSound) return;
   try {
-    blasterSound.currentTime = 0;
-    blasterSound.play();
+    const sound = blasterSound.cloneNode(); // Clone the audio object for overlapping sounds
+    sound.currentTime = 0;
+    sound.play().catch((e) => {
+      console.warn('Blaster sound failed to play:', e);
+      // Optional: Display a message to the user
+      alert('Sound playback failed. Please check your audio settings.');
+    });
   } catch (e) {
     console.warn('Blaster sound failed to play:', e);
   }
 }
+
 // Unlock audio playback on first user interaction
 window.addEventListener('click', () => {
   blasterSound.play().then(() => {
     blasterSound.pause();
     blasterSound.currentTime = 0;
-  }).catch(() => {});
+  }).catch((e) => {
+    console.warn('Audio playback failed to unlock:', e);
+  });
 }, { once: true });
 
 
