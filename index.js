@@ -42,6 +42,7 @@ const player2 = {
 
 // --- Load Star Wars blaster sound ---
 const blasterSound = new Audio ('myinstants.mp3');
+
 blasterSound.preload = 'auto'; // Preload the audio for better performance
 
 function playBlasterSound() {
@@ -102,13 +103,13 @@ function gameLoop() {
   if (player1.health > 0) {
     updatePlayer(player1, player1.controls, () => {
       if (!sword1) sword1 = createSword(player1);
-    });
+    }, 1); // Pass 1 for player1
   }
 
   if (player2.health > 0) {
     updatePlayer(player2, player2.controls, () => {
       if (!sword2) sword2 = createSword(player2);
-    });
+    }, 2); // Pass 2 for player2
   }
 
   drawPlayer(player1);
@@ -134,9 +135,10 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
-let lastSwordTime = 0;
+let lastSwordTime1 = 0;
+let lastSwordTime2 = 0;
 
-function updatePlayer(player, controls, fireSword) {
+function updatePlayer(player, controls, fireSword, playerNum) {
   if (keysPressed[controls.left] && player.x > 0) {
     player.x -= playerSpeed;
     player.direction = 'left';
@@ -155,10 +157,14 @@ function updatePlayer(player, controls, fireSword) {
   }
 
   const now = performance.now();
+  let lastSwordTime = playerNum === 1 ? lastSwordTime1 : lastSwordTime2;
   if (keysPressed[controls.sword] && now - lastSwordTime > 300) {
-    lastSwordTime = now;
+    if (playerNum === 1) lastSwordTime1 = now;
+    else lastSwordTime2 = now;
     fireSword();
     playBlasterSound();
+  }
+}
   }
 }
 
