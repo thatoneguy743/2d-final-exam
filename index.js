@@ -165,8 +165,8 @@ function updatePlayer(player, controls, fireSword, playerNum) {
     playBlasterSound();
   }
 }
-  }
-}
+  
+
 
 
 
