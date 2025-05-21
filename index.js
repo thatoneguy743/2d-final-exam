@@ -401,4 +401,4 @@ function triggerEasterEgg() {
   player1.health = 200;
   player2.health = 200;
   updateHealthBars();
-}
+}}
