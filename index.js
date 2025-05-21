@@ -164,7 +164,11 @@ function updatePlayer(player, controls, fireSword, playerNum) {
     fireSword();
     playBlasterSound();
   }
+}
   
+
+
+
 
 function createSword(player) {
   const dir = { x: 0, y: 0 };
@@ -401,4 +405,4 @@ function triggerEasterEgg() {
   player1.health = 200;
   player2.health = 200;
   updateHealthBars();
-}}
+}
