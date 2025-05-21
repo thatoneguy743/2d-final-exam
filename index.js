@@ -164,7 +164,6 @@ function updatePlayer(player, controls, fireSword, playerNum) {
     fireSword();
     playBlasterSound();
   }
-}
   
 
 function createSword(player) {
