@@ -167,9 +167,6 @@ function updatePlayer(player, controls, fireSword, playerNum) {
 }
   
 
-
-
-
 function createSword(player) {
   const dir = { x: 0, y: 0 };
   if (player.direction === 'right') dir.x = 1;
